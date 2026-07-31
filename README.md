@@ -1,3 +1,3 @@
 # AVALIA Landing Page
 
-Life at https://avalia.mlchallenges.com/
+Live at https://avalia.mlchallenges.com/
