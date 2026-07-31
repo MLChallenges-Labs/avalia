@@ -775,11 +775,19 @@ h3, .h3 {
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
   font-family: var(--font-mono);
   font-size: 1.0625rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   color: var(--white);
+}
+
+.logo__icon {
+  width: 1.25em;
+  height: 1.25em;
 }
 
 /* =========================================================
