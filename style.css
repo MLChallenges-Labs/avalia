@@ -644,7 +644,6 @@ h3, .h3 {
 }
 
 .footer__brand .logo {
-  display: inline-block;
   margin-bottom: var(--space-2);
 }
 
@@ -655,13 +654,9 @@ h3, .h3 {
   gap: var(--space-3);
 }
 
-.footer__links > a {
+.footer__links-heading {
   font-weight: 600;
   color: var(--text-on-dark);
-}
-
-.footer__links > a:hover {
-  color: var(--blue-400);
 }
 
 .footer__social {
@@ -669,8 +664,19 @@ h3, .h3 {
   gap: var(--space-3);
 }
 
+.footer__social a {
+  display: flex;
+  color: var(--text-on-dark-muted);
+  transition: color 0.2s var(--ease);
+}
+
 .footer__social a:hover {
   color: var(--blue-400);
+}
+
+.footer__social svg {
+  width: 20px;
+  height: 20px;
 }
 
 .footer__legal {
