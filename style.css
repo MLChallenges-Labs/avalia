@@ -854,3 +854,25 @@ h3, .h3 {
   flex-wrap: wrap;
   gap: var(--space-3);
 }
+
+.hero__by {
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--navy-700);
+}
+
+.hero__by p {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  font-size: 0.9375rem;
+  color: var(--text-on-dark-muted);
+}
+
+.hero__by-logo {
+  height: 2rem;
+  width: auto;
+  background: var(--white);
+  padding: 0.4em 0.7em;
+  border-radius: 4px;
+}
