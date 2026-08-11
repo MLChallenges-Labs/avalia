@@ -858,6 +858,7 @@ h3, .h3 {
 
 .hero__logo {
   font-size: 1.75rem;
+  margin-bottom: var(--space-4);
 }
 
 .hero__bg {
