@@ -75,90 +75,84 @@
     </section>
 
     <!-- 3. The Problem -->
-    <section id="problem" class="section section--tint">
+    <section id="problem" class="section section--warm">
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">The Problem</p>
-          <h2 class="h3">Today's benchmarking platforms weren't built for high-stakes AI</h2>
-        </div>
-
-        <div class="grid grid-3">
-          <div class="card">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 3.5 2.5 20h19L12 3.5Z" />
-                <path d="M12 10v4.5" />
-                <circle cx="12" cy="17.25" r="0.75" fill="currentColor" stroke="none" />
-              </svg>
-            </div>
-            <h3>Methodological fragility</h3>
-            <p>Leaderboards prioritize raw scores over statistical significance. Without
-              confidence intervals or protection against repeated test-set submissions, marginal
-              gains are indistinguishable from noise.</p>
-          </div>
-
-          <div class="card">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="5" y="10.5" width="14" height="10" rx="1.5" />
-                <path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" />
-              </svg>
-            </div>
-            <h3>Sensitive data can't leave the building</h3>
-            <p>Most platforms require data to be hosted on a central server, excluding regulated
-              sectors like healthcare, finance, and defense from the benefits of open
-              benchmarking.</p>
-          </div>
-
-          <div class="card">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 15.5a8 8 0 0 1 16 0" />
-                <path d="M12 15.5 16 9" />
-                <path d="M4 15.5h1.5M18.5 15.5H20M6.6 9.6l1.1 1.1M17.4 9.6l-1.1 1.1" />
-              </svg>
-            </div>
-            <h3>Leaderboards ≠ production readiness</h3>
-            <p>Accuracy, F1-score, and RMSE ignore the operational realities of deployment:
-              computational efficiency, latency, and energy consumption.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. The Solution -->
-    <section id="solution" class="section section--light">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">The Solution</p>
-          <h2 class="h3">AVALIA: benchmarking as a rigorous, sovereign, production-aware framework</h2>
-          <p class="body-lead">Designed and built in France from the ground up — not layered
-            onto existing tools — AVALIA embeds methodological and architectural rigor directly
-            into its core, aligned with GDPR and European digital sovereignty priorities.</p>
+          <h2 class="h3">Today's platforms aren't built for high-stakes AI</h2>
+          <p class="body-lead">Existing benchmarking platforms like Kaggle, CodaLab, and Codabench have done a lot to bring people together around AI challenges, but they still fall short on the basics that matter most in high-stakes settings: statistical rigor, data privacy, and whether the winning solution actually works in production.</p>
         </div>
 
         <ul class="pillar-list">
           <li class="pillar">
             <span class="pillar__index">01</span>
             <div>
-              <h3><a href="#methodology">Rigorous methodology</a></h3>
-              <p>Principled ranking functions, hidden evaluation sets, and bootstrap uncertainty
-                quantification.</p>
+              <h3>Methodological fragility</h3>
+              <p>Most leaderboards prioritize raw performance scores over statistical
+                significance. Without confidence intervals or control over the baseline, marginal
+                gains become indistinguishable from noise — and nothing stops repeated submissions
+                from exhausting the test set.</p>
             </div>
           </li>
           <li class="pillar">
             <span class="pillar__index">02</span>
             <div>
-              <h3><a href="#security">Sensitive data, handled right</a></h3>
-              <p>Decentralized storage and compute; data never leaves your infrastructure.</p>
+              <h3>Constraints on sensitive data</h3>
+              <p>Current benchmarking platforms typically require data to be hosted on a central
+                server. This excludes sectors governed by strict privacy rules — healthcare,
+                finance, defense — since they can't risk exposing sensitive datasets.</p>
             </div>
           </li>
           <li class="pillar">
             <span class="pillar__index">03</span>
             <div>
-              <h3>Real-world applicability</h3>
-              <p>Every submission is profiled for latency, memory, and carbon footprint, not just
-                accuracy.</p>
+              <h3>Narrow evaluation metrics</h3>
+              <p>There's a disconnect between leaderboard performance and production readiness.
+                Platforms focus almost exclusively on accuracy, F1-score, or RMSE, ignoring
+                computational efficiency, inference latency, and energy consumption.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 4. The Solution -->
+    <section id="solution" class="section section--cool">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">The Solution</p>
+          <h2 class="h3">AVALIA: a rigorous, sovereign, production-aware framework</h2>
+          <p class="body-lead">AVALIA is designed and built from scratch, not bolted onto an existing tool, so that methodological rigor and strong data protection are part of the platform's foundation rather than an afterthought.</p>
+        </div>
+
+        <ul class="pillar-list">
+          <li class="pillar">
+            <span class="pillar__index">01</span>
+            <div>
+              <h3>Rigorous methodology</h3>
+              <p>AVALIA treats benchmarking as a statistical experiment rather than a static list
+                of scores: principled ranking functions, hidden evaluation sets to avoid
+                overfitting, baseline comparisons, and uncertainty quantification through
+                bootstrap resampling.</p>
+            </div>
+          </li>
+          <li class="pillar">
+            <span class="pillar__index">02</span>
+            <div>
+              <h3>Handling sensitive data</h3>
+              <p>Data is stored in a decentralized way with restricted access to compute. By
+                leveraging containerized environments, organizers can evaluate third-party models
+                on local, private servers without the sensitive raw data ever leaving the host's
+                infrastructure.</p>
+            </div>
+          </li>
+          <li class="pillar">
+            <span class="pillar__index">03</span>
+            <div>
+              <h3>Evaluating real-world applicability</h3>
+              <p>AVALIA expands the definition of performance to include the hidden costs of AI.
+                Every submission is profiled across inference latency, peak memory usage, and
+                estimated carbon footprint — not just accuracy on paper.</p>
             </div>
           </li>
         </ul>
@@ -259,57 +253,7 @@
       </div>
     </section>
 
-    <!-- 6. Methodology -->
-    <section id="methodology" class="section section--light">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Methodology</p>
-          <h2 class="h3">Benchmarking as a statistical experiment, not a scoreboard</h2>
-        </div>
-
-        <ul class="pillar-list">
-          <li class="pillar">
-            <span class="pillar__index">01</span>
-            <div>
-              <h3>Ranking functions</h3>
-              <p>Multiple metrics are aggregated using the average-rank method, or a weighted
-                average rank when organizers want to prioritize specific criteria, instead of
-                ad-hoc score combinations.</p>
-            </div>
-          </li>
-          <li class="pillar">
-            <span class="pillar__index">02</span>
-            <div>
-              <h3>Public and private leaderboards</h3>
-              <p>Public sets support development; hidden private sets verify generalization.
-                Multiple leaderboards per phase, run sequentially or in parallel, with fully
-                configurable visibility — including "private problem, public participation" for
-                sensitive tasks.</p>
-            </div>
-          </li>
-          <li class="pillar">
-            <span class="pillar__index">03</span>
-            <div>
-              <h3>Statistical significance</h3>
-              <p>Bootstrap resampling produces error bars for every submission. Submissions with
-                statistically equivalent performance are grouped together instead of being ranked
-                apart on noise.</p>
-            </div>
-          </li>
-          <li class="pillar">
-            <span class="pillar__index">04</span>
-            <div>
-              <h3>Baseline as a threshold</h3>
-              <p>Organizers define a reference baseline visible on the leaderboard. Submissions
-                must beat it by a statistically significant margin to count as a valid solution,
-                filtering out marginal "leaderboard climbing."</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- 7. Security & Reproducibility -->
+    <!-- 6. Security & Reproducibility -->
     <section id="security" class="section section--dark">
       <div class="container">
         <div class="section-head">
@@ -373,7 +317,7 @@
       </div>
     </section>
 
-    <!-- 8. Who AVALIA Is For -->
+    <!-- 7. Who AVALIA Is For -->
     <section id="who-its-for" class="section section--light">
       <div class="container">
         <div class="section-head">
@@ -381,44 +325,38 @@
           <h2 class="h3">Built for organizations that can't compromise on data</h2>
         </div>
 
-        <div class="grid grid-3">
-          <div class="card">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 20V9l6-4 6 4v11" /><path d="M14 20v-7l6-3v10" /><path d="M4 20h16" /><path d="M8 12h1M8 16h1M12 16h1" />
-              </svg>
+        <ul class="audience-strip">
+          <li class="audience-strip__item">
+            <div class="audience-strip__icon" aria-hidden="true">
+              <svg><use href="assets/svg/industrial.svg"></use></svg>
             </div>
             <h3>Industrial actors</h3>
             <p>Organize internal benchmarks across problems like electronic optimization,
               material handling, and predictive maintenance of equipment and vehicles.</p>
-          </div>
+          </li>
 
-          <div class="card">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 3h6M10 3v5.5L4.5 18a2 2 0 0 0 1.7 3h11.6a2 2 0 0 0 1.7-3L14 8.5V3" /><path d="M6.5 15h11" />
-              </svg>
+          <li class="audience-strip__item">
+            <div class="audience-strip__icon" aria-hidden="true">
+              <svg><use href="assets/svg/research.svg"></use></svg>
             </div>
             <h3>Research institutes</h3>
             <p>In sensitive domains such as health, education, and energy: install once, then run
               multiple public or internal benchmarks (imaging, automatic diagnosis, and more).</p>
-          </div>
+          </li>
 
-          <div class="card">
-            <div class="card-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 3.5 5 6.5v5c0 4.5 3 7.5 7 8.5 4-1 7-4 7-8.5v-5L12 3.5Z" />
-              </svg>
+          <li class="audience-strip__item">
+            <div class="audience-strip__icon" aria-hidden="true">
+              <svg><use href="assets/svg/defense.svg"></use></svg>
             </div>
             <h3>Defense &amp; public bodies</h3>
             <p>License with maintenance, with full internal control and no external visibility
               into internally organized benchmarks.</p>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <!-- 9. How to Get AVALIA -->
+    <!-- 8. How to Get AVALIA -->
     <section id="engagement" class="section section--tint">
       <div class="container">
         <div class="section-head">
@@ -426,101 +364,74 @@
           <h2 class="h3">Flexible engagement, your infrastructure, your rules</h2>
         </div>
 
-        <div class="grid grid-3">
-          <div class="card">
-            <h3>Restricted Licensed Use</h3>
+        <ul class="engagement-list">
+          <li class="engagement-row">
+            <span class="engagement-row__label">Restricted Licensed Use</span>
             <p>Source-available: code is fully readable for transparency and auditing, but usage
               requires formal permission or a paid agreement. No redistribution without prior
               authorization. <em>(Exact terms to be defined.)</em></p>
-          </div>
+          </li>
 
-          <div class="card">
-            <h3>Consulting Packages</h3>
+          <li class="engagement-row">
+            <span class="engagement-row__label">Consulting Packages</span>
             <p>Specialized support for professional installation, technical configuration, and
               management of individual benchmarks and competitions.</p>
-          </div>
+          </li>
 
-          <div class="card">
-            <h3>Managed Benchmarking Infrastructure</h3>
+          <li class="engagement-row">
+            <span class="engagement-row__label">Managed Benchmarking Infrastructure</span>
             <p>A dedicated hosted environment for public competitions and benchmarks, with
               baseline compute support and the flexibility to integrate external compute
               resources for demanding workloads.</p>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <!-- 10. Who's Behind AVALIA -->
+    <!-- 9. Who's Behind AVALIA -->
     <section id="team" class="section section--light">
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">Who's behind AVALIA</p>
           <h2 class="h3">Built by the people who built Codabench</h2>
-          <p class="body-lead">AVALIA is developed by MLChallenges, a French consulting company
-            for AI competitions and benchmarks. The team are core developers of Codabench, an
-            open-source competition platform, and have organized large-scale challenges for
-            institutions including Lawrence Berkeley National Laboratory, Université
-            Paris-Saclay, the University of Washington, and the U.S. Department of Energy.</p>
+          <p class="body-lead">AVALIA is developed by MLChallenges, a French consulting
+            company for AI competitions and benchmarks, founded by Adrien Pavão and Ihsan
+            Ullah. The team are core developers of Codabench, an open-source competition
+            platform, and have organized large-scale challenges for institutions including
+            Lawrence Berkeley National Laboratory, Université Paris-Saclay, the University of
+            Washington, and the U.S. Department of Energy.</p>
         </div>
 
-        <!-- Bios -->
-        <div class="grid grid-2 bios">
-          <div class="bio">
-            <div class="bio__avatar" aria-hidden="true">AP</div>
-            <h3>Adrien Pavão</h3>
-            <p>PhD in machine learning from Université Paris-Saclay, specializing in the
-              methodology of scientific competitions. Lead editor and co-author of
-              <em>AI Competitions and Benchmarks — The Science Behind the Contests</em>. Core
-              developer and administrator of CodaLab Competitions and Codabench.</p>
-          </div>
-
-          <div class="bio">
-            <div class="bio__avatar" aria-hidden="true">IU</div>
-            <h3>Ihsan Ullah</h3>
-            <p>Research Software Engineer and core contributor to Codabench. Master's degree in
-              Artificial Intelligence from Université Paris-Saclay. Expertise in machine learning
-              and large-scale research software infrastructure, with 3+ years organizing
-              scientific challenges.</p>
-          </div>
+        <div class="team__actions">
+          <a href="https://mlchallenges.com/about" target="_blank" rel="noopener" class="btn btn-primary-dark">Learn More About Us</a>
+          <a href="https://mlchallenges.com/projects" target="_blank" rel="noopener" class="btn btn-outline-dark">Browse Our Projects</a>
         </div>
 
-        <!-- Pull quote -->
-        <blockquote class="pull-quote">
-          <p>We combine leading academic research on benchmark methodology, operational
-            experience organizing dozens of international competitions, and technical mastery of
-            existing platforms like CodaLab and Codabench — giving us a precise view of what's
-            missing for organizations that need to rigorously evaluate AI solutions.</p>
-        </blockquote>
-
-        <!-- Case studies -->
-        <div class="grid grid-3">
-          <div class="card">
-            <span class="eyebrow">Dassault Aviation</span>
-            <h3>AI 4 Industry Challenge</h3>
-            <p>A €500,000 research grant challenge on multivariate time-series regression for
-              aeronautics data, run on a blind setup where participants trained models without
-              direct access to confidential data.</p>
+        <div class="founders">
+          <div class="founder">
+            <img src="assets/images/founders/adrien.png" alt="Adrien Pavão" class="founder__photo">
+            <div>
+              <h3>Adrien Pavão</h3>
+              <p class="founder__role">Founder, Competition Architect</p>
+              <p class="founder__bio">PhD in Machine Learning, Université Paris-Saclay — core
+                developer of CodaLab Competitions and Codabench.</p>
+            </div>
           </div>
 
-          <div class="card">
-            <span class="eyebrow">With RTE</span>
-            <h3>L2RPN 2023</h3>
-            <p>Participants built AI agents to operate a simulated power grid inside a
-              reinforcement-learning environment.</p>
-          </div>
-
-          <div class="card">
-            <span class="eyebrow">High-Energy Physics &amp; Cosmology</span>
-            <h3>FAIR Universe</h3>
-            <p>A large-compute-scale AI platform for high-energy physics and cosmology, built
-              with Lawrence Berkeley National Laboratory, Université Paris-Saclay, the University
-              of Washington, the Institute for Advanced Study, and ChaLearn.</p>
+          <div class="founder">
+            <img src="assets/images/founders/ihsan.jpg" alt="Ihsan Ullah" class="founder__photo">
+            <div>
+              <h3>Ihsan Ullah</h3>
+              <p class="founder__role">Co-Founder, Research Software Engineer</p>
+              <p class="founder__bio">MSc in Artificial Intelligence, Université Paris-Saclay —
+                core contributor to Codabench, with 3+ years organizing scientific challenges.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 11. Get in Touch -->
+    <!-- 10. Get in Touch -->
     <section id="contact" class="section section--tint">
       <div class="container">
         <div class="section-head">

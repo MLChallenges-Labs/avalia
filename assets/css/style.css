@@ -24,6 +24,11 @@
   --blue-400: #60A5FA;   /* tint — links/accents on dark, icon strokes */
   --blue-100: #DBEAFE;   /* tint background on light (badges, hovers) */
 
+  /* Color — problem/solution narrative tints (warm = tension, cool = resolution) */
+  --warm-tint: #FBF3EA;  /* Problem section background */
+  --amber-700: #B45309;  /* Problem section accent — index numbers, eyebrow */
+  --cool-tint: #EAF2FE;  /* Solution section background */
+
   /* Text on dark sections */
   --text-on-dark: #E2E8F0;
   --text-on-dark-muted: var(--gray-400);
@@ -159,6 +164,16 @@ textarea:focus-visible {
   color: var(--text-on-light);
 }
 
+.section--warm {
+  background: var(--warm-tint);
+  color: var(--text-on-light);
+}
+
+.section--cool {
+  background: var(--cool-tint);
+  color: var(--text-on-light);
+}
+
 .section--sm {
   padding-block: var(--space-5);
 }
@@ -184,8 +199,13 @@ textarea:focus-visible {
 }
 
 .section--light .eyebrow,
-.section--tint .eyebrow {
+.section--tint .eyebrow,
+.section--cool .eyebrow {
   color: var(--blue-900);
+}
+
+.section--warm .eyebrow {
+  color: var(--amber-700);
 }
 
 h1, .h1 {
@@ -263,6 +283,30 @@ h3, .h3 {
 .btn-outline:hover {
   background: var(--blue-400);
   color: var(--navy-900);
+}
+
+/* TEMP: darker button color test — delete these two rules along with the
+   test markup in the "Who's behind AVALIA" section if not preferred. */
+.btn-primary-dark {
+  background: var(--blue-900);
+  border-color: var(--blue-900);
+  color: var(--white);
+}
+
+.btn-primary-dark:hover {
+  background: transparent;
+  color: var(--blue-900);
+}
+
+.btn-outline-dark {
+  background: transparent;
+  border-color: var(--blue-900);
+  color: var(--blue-900);
+}
+
+.btn-outline-dark:hover {
+  background: var(--blue-900);
+  color: var(--white);
 }
 
 /* =========================================================
@@ -397,33 +441,39 @@ h3, .h3 {
 .pillar-list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
 .pillar {
   display: flex;
-  gap: var(--space-3);
+  gap: var(--space-4);
   align-items: flex-start;
-  padding-block: var(--space-3);
-  border-top: 1px solid var(--gray-200);
+  padding: var(--space-4);
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.pillar:hover {
+  border-color: var(--blue-900);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.1);
+  transform: translateY(-2px);
+}
+
+#problem .pillar:hover {
+  border-color: var(--amber-700);
 }
 
 .pillar__index {
   font-family: var(--font-mono);
-  font-size: 0.9375rem;
+  font-size: 1.5rem;
+  font-weight: 700;
   color: var(--blue-900);
-  padding-top: 0.2em;
 }
 
-.pillar h3 a {
-  color: var(--text-on-light);
-  transition: color 0.2s var(--ease);
-}
-
-.pillar h3 a:hover {
-  color: var(--blue-900);
-  text-decoration: underline;
-  text-underline-offset: 3px;
+#problem .pillar__index {
+  color: var(--amber-700);
 }
 
 /* =========================================================
@@ -541,47 +591,165 @@ h3, .h3 {
 }
 
 /* =========================================================
-   Team — bios, pull-quote
+   Who It's For — audience strip
    ========================================================= */
 
-.bios {
-  margin-bottom: var(--space-6);
-}
-
-.bio {
+.audience-strip {
   display: flex;
-  gap: var(--space-3);
-  align-items: flex-start;
+  gap: var(--space-5);
 }
 
-.bio__avatar {
-  flex: 0 0 auto;
+.audience-strip__item {
+  flex: 1;
+  padding-inline: var(--space-4);
+  text-align: center;
+}
+
+.audience-strip__item:first-child {
+  padding-left: 0;
+}
+
+.audience-strip__item:last-child {
+  padding-right: 0;
+}
+
+.audience-strip__item + .audience-strip__item {
+  border-left: 1px solid var(--gray-200);
+}
+
+.audience-strip__icon {
   width: 56px;
   height: 56px;
-  border-radius: 50%;
-  background: var(--blue-100);
-  color: var(--blue-900);
-  font-family: var(--font-mono);
-  font-weight: 600;
-  font-size: 0.9375rem;
+  margin-inline: auto;
+  margin-bottom: var(--space-3);
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.pull-quote {
-  margin-block: var(--space-6);
-  padding: var(--space-5);
-  background: var(--blue-100);
-  border-radius: var(--radius-lg);
-  border-left: 4px solid var(--blue-900);
-}
-
-.pull-quote p {
-  font-size: clamp(1.0625rem, 1rem + 0.4vw, 1.3125rem);
-  font-weight: 500;
   color: var(--blue-900);
-  line-height: 1.5;
+}
+
+.audience-strip__icon svg {
+  width: 34px;
+  height: 34px;
+}
+
+@media (max-width: 900px) {
+  .audience-strip {
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .audience-strip__item {
+    padding-inline: 0;
+  }
+
+  .audience-strip__item + .audience-strip__item {
+    border-left: none;
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--gray-200);
+  }
+}
+
+/* =========================================================
+   How to Get AVALIA — engagement rows
+   ========================================================= */
+
+.engagement-list {
+  border-top: 1px solid var(--gray-200);
+}
+
+.engagement-row {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--space-4);
+  padding-block: var(--space-4);
+  padding-left: var(--space-4);
+  border-bottom: 1px solid var(--gray-200);
+  border-left: 3px solid var(--blue-900);
+}
+
+.engagement-row__label {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 1.0625rem;
+  color: var(--blue-900);
+}
+
+@media (max-width: 900px) {
+  .engagement-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+}
+
+/* =========================================================
+   Team — actions, founder spotlight
+   ========================================================= */
+
+.team__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.founders {
+  display: flex;
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--gray-200);
+}
+
+.founder {
+  flex: 1;
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.founder + .founder {
+  padding-left: var(--space-6);
+  border-left: 1px solid var(--gray-200);
+}
+
+.founder__photo {
+  flex: 0 0 auto;
+  width: 104px;
+  height: 104px;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+}
+
+.founder h3 {
+  font-size: 1.0625rem;
+  margin-bottom: 0.2em;
+}
+
+.founder__role {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--blue-900);
+  margin-bottom: var(--space-2);
+}
+
+.founder__bio {
+  font-size: 0.9375rem;
+  color: var(--text-on-light-muted);
+}
+
+@media (max-width: 900px) {
+  .founders {
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .founder + .founder {
+    padding-left: 0;
+    padding-top: var(--space-5);
+    border-left: none;
+    border-top: 1px solid var(--gray-200);
+  }
 }
 
 /* =========================================================
