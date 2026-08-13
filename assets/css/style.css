@@ -270,8 +270,8 @@ h3, .h3 {
 }
 
 .btn-primary:hover {
-  background: transparent;
-  color: var(--blue-400);
+  background: color-mix(in srgb, var(--blue-400) 85%, black);
+  border-color: color-mix(in srgb, var(--blue-400) 85%, black);
 }
 
 .btn-outline {
@@ -281,8 +281,9 @@ h3, .h3 {
 }
 
 .btn-outline:hover {
-  background: var(--blue-400);
-  color: var(--navy-900);
+  background: color-mix(in srgb, var(--blue-400) 15%, transparent);
+  border-color: var(--blue-400);
+  color: var(--blue-400);
 }
 
 /* TEMP: darker button color test — delete these two rules along with the
@@ -294,8 +295,8 @@ h3, .h3 {
 }
 
 .btn-primary-dark:hover {
-  background: transparent;
-  color: var(--blue-900);
+  background: var(--blue-700);
+  border-color: var(--blue-700);
 }
 
 .btn-outline-dark {
@@ -305,8 +306,9 @@ h3, .h3 {
 }
 
 .btn-outline-dark:hover {
-  background: var(--blue-900);
-  color: var(--white);
+  background: var(--blue-100);
+  border-color: var(--blue-900);
+  color: var(--blue-900);
 }
 
 /* =========================================================
