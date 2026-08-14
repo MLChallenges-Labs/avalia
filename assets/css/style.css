@@ -685,6 +685,195 @@ h3, .h3 {
 }
 
 /* =========================================================
+   Milestones — timeline
+   ========================================================= */
+
+.timeline {
+  position: relative;
+  padding-top: var(--space-2);
+}
+
+.timeline__track {
+  position: absolute;
+  top: calc(var(--space-2) + 15px);
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    var(--blue-900) 0%,
+    var(--blue-900) 50%,
+    var(--gray-200) 50%,
+    var(--gray-200) 100%
+  );
+}
+
+.timeline__list {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.timeline__item {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  text-align: center;
+}
+
+.timeline__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+
+.timeline__marker {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--off-white);
+  border: 2px solid var(--gray-200);
+}
+
+.timeline__item.is-done .timeline__marker {
+  background: var(--blue-900);
+  border-color: var(--blue-900);
+}
+
+.timeline__item.is-current .timeline__marker {
+  background: var(--off-white);
+  border-color: var(--blue-900);
+  box-shadow: 0 0 0 4px var(--blue-100);
+  animation: timeline-pulse 2s var(--ease) infinite;
+}
+
+.timeline__label {
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--text-on-light-muted);
+}
+
+.timeline__item.is-current .timeline__label {
+  color: var(--text-on-light);
+}
+
+.section--dark .timeline__label {
+  color: var(--text-on-dark-muted);
+}
+
+.section--dark .timeline__item.is-current .timeline__label {
+  color: var(--text-on-dark);
+}
+
+.timeline__status {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-on-light-muted);
+}
+
+.timeline__item.is-current .timeline__status {
+  color: var(--blue-900);
+}
+
+.timeline__item.is-done .timeline__status {
+  color: color-mix(in srgb, var(--blue-900) 55%, var(--text-on-light-muted));
+}
+
+.section--dark .timeline__item.is-done .timeline__status {
+  color: color-mix(in srgb, var(--blue-400) 55%, var(--text-on-dark-muted));
+}
+
+@keyframes timeline-pulse {
+  0%, 100% { box-shadow: 0 0 0 4px var(--blue-100); }
+  50% { box-shadow: 0 0 0 8px var(--blue-100); }
+}
+
+.section--dark .timeline__track {
+  background: linear-gradient(
+    to right,
+    var(--blue-400) 0%,
+    var(--blue-400) 50%,
+    var(--navy-700) 50%,
+    var(--navy-700) 100%
+  );
+}
+
+.section--dark .timeline__marker {
+  background: var(--navy-900);
+  border-color: var(--navy-700);
+}
+
+.section--dark .timeline__item.is-done .timeline__marker {
+  background: var(--blue-400);
+  border-color: var(--blue-400);
+}
+
+.section--dark .timeline__item.is-current .timeline__marker {
+  background: var(--navy-900);
+  border-color: var(--blue-400);
+  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.25);
+  animation: timeline-pulse-dark 2s var(--ease) infinite;
+}
+
+.section--dark .timeline__status {
+  color: var(--text-on-dark-muted);
+}
+
+.section--dark .timeline__item.is-current .timeline__status {
+  color: var(--blue-400);
+}
+
+@keyframes timeline-pulse-dark {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.25); }
+  50% { box-shadow: 0 0 0 8px rgba(96, 165, 250, 0.25); }
+}
+
+@media (max-width: 900px) {
+  .timeline {
+    padding-bottom: var(--space-2);
+  }
+  .timeline__track {
+    top: calc(var(--space-2) + 15px);
+    bottom: calc(var(--space-2) + 15px);
+    left: 15px;
+    right: auto;
+    width: 2px;
+    height: auto;
+    background: linear-gradient(
+      to bottom,
+      var(--blue-900) 0%,
+      var(--blue-900) 50%,
+      var(--gray-200) 50%,
+      var(--gray-200) 100%
+    );
+  }
+  .section--dark .timeline__track {
+    background: linear-gradient(
+      to bottom,
+      var(--blue-400) 0%,
+      var(--blue-400) 50%,
+      var(--navy-700) 50%,
+      var(--navy-700) 100%
+    );
+  }
+  .timeline__list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+  .timeline__item {
+    flex-direction: row;
+    text-align: left;
+  }
+}
+
+/* =========================================================
    Team — actions, founder spotlight
    ========================================================= */
 
@@ -1080,4 +1269,45 @@ h3, .h3 {
   background: var(--white);
   padding: 0.4em 0.7em;
   border-radius: 4px;
+}
+
+/* =========================================================
+   Back to Top
+   ========================================================= */
+
+.back-to-top {
+  position: fixed;
+  right: var(--space-4);
+  bottom: var(--space-4);
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--blue-900);
+  border: 2px solid var(--blue-900);
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.18);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.2s var(--ease), transform 0.2s var(--ease), background-color 0.2s var(--ease);
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: var(--blue-700);
+  border-color: var(--blue-700);
+}
+
+.back-to-top svg {
+  width: 20px;
+  height: 20px;
 }
