@@ -136,91 +136,180 @@
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">Architecture</p>
-          <h2 class="h3">Your data and compute never leave your infrastructure</h2>
-          <p class="body-lead">AVALIA decouples the orchestration layer from execution and
-            storage. Datasets and code stay inside your secured environment; a lightweight public
-            hub coordinates submissions and displays sanitized results.</p>
+          <h2 class="h3">An architecture built around your control</h2>
         </div>
 
-        <!-- Flow diagram -->
-        <div class="arch-diagram" role="img" aria-label="Participant's model produces a code submission, sent to the AVALIA front-end server, which exchanges input and output with the organizer's infrastructure for storage and compute.">
-          <div class="arch-box">Participant's<br>Model</div>
-          <span class="arch-arrow">→</span>
-          <div class="arch-box">Code<br>Submission</div>
-          <span class="arch-arrow">→</span>
-          <div class="arch-box arch-box--highlight">Front-End Server<br><span>(AVALIA)</span></div>
-          <span class="arch-arrow">⇄<br><small>in / out</small></span>
-          <div class="arch-box arch-box--outline">Organizer Infrastructure<br><span>Storage &amp; Compute</span></div>
-        </div>
+        <!-- Subsection 1: Technology stack and components -->
+        <div class="arch-subsection">
+          <p class="eyebrow">Technology Stack &amp; Components</p>
+          <p class="arch-subsection__desc">Built on React for the frontend, Django for the
+            backend, S3-compatible storage, and VMs for compute — each layer can be swapped out
+            or self-hosted independently.</p>
 
-        <!-- 4 architecture layers -->
-        <div class="grid grid-2 arch-layers">
-          <div class="card">
-            <span class="eyebrow">Frontend</span>
-            <p>React-based portal for admins, organizers, and participants (profile, team,
-              competition, submission management).</p>
-          </div>
-          <div class="card">
-            <span class="eyebrow">Backend</span>
-            <p>Python service handling core logic, API coordination, database, user permissions,
-              submission queue, compute connections.</p>
-          </div>
-          <div class="card">
-            <span class="eyebrow">Compute</span>
-            <p>Evaluation tasks run in isolated Docker containers; external compute resources can
-              be attached for heavier workloads.</p>
-          </div>
-          <div class="card">
-            <span class="eyebrow">Data storage</span>
-            <p>Only public metadata and sanitized scores live on the host hub; datasets, ground
-              truth, and submission code stay on the client's local storage or S3-compatible
-              buckets.</p>
-          </div>
-        </div>
-
-        <!-- 3-step security level visual -->
-        <div class="sec-levels">
-          <div class="sec-level">
-            <div class="sec-level__bar">
-              <span class="sec-level__seg sec-level__seg--avalia"></span>
-              <span class="sec-level__seg sec-level__seg--avalia"></span>
-              <span class="sec-level__seg sec-level__seg--avalia"></span>
-              <span class="sec-level__seg sec-level__seg--avalia"></span>
+          <div class="grid grid-4 arch-layers">
+            <div class="card">
+              <div class="card-icon" aria-hidden="true">
+                <svg><use href="assets/svg/frontend.svg#icon-frontend"></use></svg>
+              </div>
+              <span class="eyebrow">Frontend · React</span>
+              <p>A portal for admins, organizers, and participants — profile, team, competition,
+                and submission management in one interface.</p>
             </div>
-            <h3>Level 1</h3>
-            <p>All components hosted on AVALIA's infrastructure (not recommended for sensitive
-              use cases).</p>
-          </div>
-
-          <div class="sec-level sec-level--recommended">
-            <span class="sec-level__badge">Recommended</span>
-            <div class="sec-level__bar">
-              <span class="sec-level__seg sec-level__seg--avalia"></span>
-              <span class="sec-level__seg sec-level__seg--avalia"></span>
-              <span class="sec-level__seg sec-level__seg--client"></span>
-              <span class="sec-level__seg sec-level__seg--client"></span>
+            <div class="card">
+              <div class="card-icon" aria-hidden="true">
+                <svg><use href="assets/svg/backend.svg#icon-backend"></use></svg>
+              </div>
+              <span class="eyebrow">Backend · Django</span>
+              <p>Handles core logic, API coordination, the database, user permissions, the
+                submission queue, and compute connections.</p>
             </div>
-            <h3>Level 2</h3>
-            <p>Front-end and back-end hosted by AVALIA; storage and compute stay on the
-              organizer's infrastructure.</p>
-          </div>
-
-          <div class="sec-level">
-            <div class="sec-level__bar">
-              <span class="sec-level__seg sec-level__seg--client"></span>
-              <span class="sec-level__seg sec-level__seg--client"></span>
-              <span class="sec-level__seg sec-level__seg--client"></span>
-              <span class="sec-level__seg sec-level__seg--client"></span>
+            <div class="card">
+              <div class="card-icon" aria-hidden="true">
+                <svg><use href="assets/svg/storage.svg#icon-storage"></use></svg>
+              </div>
+              <span class="eyebrow">Data Storage · S3</span>
+              <p>Only public metadata and sanitized scores live on the host hub; datasets, ground
+                truth, and submission code stay on the client's local storage or S3-compatible
+                buckets.</p>
             </div>
-            <h3>Level 3</h3>
-            <p>All components deployed fully within the client's infrastructure (highest privacy,
-              fully on-premise).</p>
+            <div class="card">
+              <div class="card-icon" aria-hidden="true">
+                <svg><use href="assets/svg/compute.svg#icon-compute"></use></svg>
+              </div>
+              <span class="eyebrow">Compute · VMs</span>
+              <p>Evaluation tasks run in isolated containers on virtual machines; external compute
+                resources can be attached for heavier workloads.</p>
+            </div>
           </div>
         </div>
 
-        <div class="sec-levels__legend">
-          <span><span class="sec-level__seg sec-level__seg--avalia"></span> AVALIA-hosted</span>
-          <span><span class="sec-level__seg sec-level__seg--client"></span> Client infrastructure</span>
+        <!-- Subsection 2a: Submission flow -->
+        <div class="arch-subsection">
+          <p class="eyebrow">Submission Flow</p>
+          <p class="arch-subsection__desc">A participant's model is submitted as code through
+            AVALIA's front-end, which exchanges input and output with the organizer's own
+            infrastructure for storage and compute.</p>
+
+          <div class="arch-diagram" role="img" aria-label="Participant's model produces a code submission, sent to the AVALIA front-end server, which exchanges input and output with the organizer's infrastructure for storage and compute.">
+            <div class="arch-box">Participant's<br>Model</div>
+            <span class="arch-arrow">→</span>
+            <div class="arch-box">Code<br>Submission</div>
+            <span class="arch-arrow">→</span>
+            <div class="arch-box arch-box--highlight">Front-End Server<br><span>(AVALIA)</span></div>
+            <span class="arch-arrow">⇄<br><small>in / out</small></span>
+            <div class="arch-box arch-box--outline">Organizer Infrastructure<br><span>Storage &amp; Compute</span></div>
+          </div>
+        </div>
+
+        <!-- Subsection 2b: Submission execution flow -->
+        <div class="arch-subsection">
+          <p class="eyebrow">Submission Execution Flow</p>
+          <p class="arch-subsection__desc">Once received, a submission moves through a
+            configurable pipeline — optional pre- and post-execution checks — before results are
+            published back to participants.</p>
+
+          <div class="arch-diagram arch-diagram--pipeline" role="img" aria-label="A submission is submitted through the AVALIA front-end, optionally pre-checked in compute, executed in compute, optionally post-checked, then results are displayed on the AVALIA front-end.">
+            <div class="arch-box arch-box--highlight">Submission<br><span>via AVALIA Frontend</span></div>
+            <span class="arch-arrow">→</span>
+            <div class="arch-box arch-box--outline">Precheck<br><span>optional · compute</span></div>
+            <span class="arch-arrow">→</span>
+            <div class="arch-box">Execution<br><span>compute</span></div>
+            <span class="arch-arrow">→</span>
+            <div class="arch-box arch-box--outline">Postcheck<br><span>optional · compute</span></div>
+            <span class="arch-arrow">→</span>
+            <div class="arch-box arch-box--highlight">Results<br><span>via AVALIA Frontend</span></div>
+          </div>
+        </div>
+
+        <!-- Subsection 3: Deployment levels -->
+        <div class="arch-subsection">
+          <p class="eyebrow">Deployment Levels</p>
+          <p class="arch-subsection__desc">Choose how much of the stack AVALIA hosts on your
+            behalf — from a fully managed cloud instance to a completely self-hosted deployment.</p>
+
+          <div class="sec-levels">
+            <div class="sec-level">
+              <span class="sec-level__index">Level 1</span>
+              <h3 class="sec-level__name">AVALIA Cloud</h3>
+              <p>AVALIA hosts everything on your behalf — the fastest way to get started. Best
+                for public benchmarks without sensitive data.</p>
+              <div class="sec-level__bar">
+                <div class="sec-level__seg-item">
+                  <span class="sec-level__seg sec-level__seg--avalia"></span>
+                  <span class="sec-level__seg-label">Frontend</span>
+                </div>
+                <div class="sec-level__seg-item">
+                  <span class="sec-level__seg sec-level__seg--avalia"></span>
+                  <span class="sec-level__seg-label">Backend</span>
+                </div>
+                <div class="sec-level__seg-item">
+                  <span class="sec-level__seg sec-level__seg--avalia"></span>
+                  <span class="sec-level__seg-label">Storage</span>
+                </div>
+                <div class="sec-level__seg-item">
+                  <span class="sec-level__seg sec-level__seg--avalia"></span>
+                  <span class="sec-level__seg-label">Compute</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="sec-level sec-level--recommended">
+              <span class="sec-level__badge">Recommended</span>
+              <span class="sec-level__index">Level 2</span>
+              <h3 class="sec-level__name">Hybrid</h3>
+              <p>AVALIA hosts the frontend and backend; your data and compute never leave your
+                infrastructure. The right balance of ease and control for most sensitive use
+                cases.</p>
+              <div class="sec-level__bar">
+                <div class="sec-level__seg-item">
+                  <span class="sec-level__seg sec-level__seg--avalia"></span>
+                  <span class="sec-level__seg-label">Frontend</span>
+                </div>
+                <div class="sec-level__seg-item">
+                  <span class="sec-level__seg sec-level__seg--avalia"></span>
+                  <span class="sec-level__seg-label">Backend</span>
+                </div>
+                <div class="sec-level__seg-item">
+                  <span class="sec-level__seg sec-level__seg--client"></span>
+                  <span class="sec-level__seg-label">Storage</span>
+                </div>
+                <div class="sec-level__seg-item">
+                  <span class="sec-level__seg sec-level__seg--client"></span>
+                  <span class="sec-level__seg-label">Compute</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="sec-level">
+              <span class="sec-level__index">Level 3</span>
+              <h3 class="sec-level__name">Self-Hosted</h3>
+              <p>Every component is deployed fully within your own infrastructure. Maximum
+                privacy and control — ideal for defense and highly regulated environments.</p>
+              <div class="sec-level__bar">
+                <div class="sec-level__seg-item">
+                  <span class="sec-level__seg sec-level__seg--client"></span>
+                  <span class="sec-level__seg-label">Frontend</span>
+                </div>
+                <div class="sec-level__seg-item">
+                  <span class="sec-level__seg sec-level__seg--client"></span>
+                  <span class="sec-level__seg-label">Backend</span>
+                </div>
+                <div class="sec-level__seg-item">
+                  <span class="sec-level__seg sec-level__seg--client"></span>
+                  <span class="sec-level__seg-label">Storage</span>
+                </div>
+                <div class="sec-level__seg-item">
+                  <span class="sec-level__seg sec-level__seg--client"></span>
+                  <span class="sec-level__seg-label">Compute</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sec-levels__legend">
+            <span><span class="sec-level__seg sec-level__seg--avalia"></span> AVALIA-hosted</span>
+            <span><span class="sec-level__seg sec-level__seg--client"></span> Your infrastructure</span>
+          </div>
         </div>
       </div>
     </section>
@@ -229,61 +318,82 @@
     <section id="security" class="section section--light">
       <div class="container">
         <div class="section-head">
-          <p class="eyebrow">Security &amp; Reproducibility</p>
-          <h2 class="h3">Full control, zero blind trust</h2>
+          <p class="eyebrow">Prominent Features</p>
+          <h2 class="h3">Security and reproducibility, by design</h2>
         </div>
 
-        <!-- Submission pipeline diagram -->
-        <div class="arch-diagram arch-diagram--pipeline" role="img" aria-label="Code submission goes through a pre-check, then optional scan program with automated or human-in-the-loop review, then an evaluation program running in an isolated container with access to data, producing results (logs, scores, plots) that feed the leaderboard.">
-          <div class="arch-box">Code<br>Submission</div>
-          <span class="arch-arrow">→</span>
-          <div class="arch-box">Pre-check</div>
-          <span class="arch-arrow">→</span>
-          <div class="arch-box">Scan Program<br><span>auto / human-in-the-loop</span></div>
-          <span class="arch-arrow">→</span>
-          <div class="arch-box arch-box--highlight">Evaluation Program<br><span>isolated container</span></div>
-          <span class="arch-arrow">→</span>
-          <div class="arch-box">Results<br><span>logs, scores, plots</span></div>
-          <span class="arch-arrow">→</span>
-          <div class="arch-box arch-box--outline">Leaderboard</div>
-        </div>
-
-        <ul class="feature-list grid grid-2">
-          <li>
-            <svg class="feature-list__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9 17.5 20 6.5" /></svg>
-            <span>Git-integrated workflows (GitHub/GitLab) for managing training and evaluation logic.</span>
+        <ul class="security-features">
+          <li class="security-feature">
+            <div class="security-feature__icon" aria-hidden="true">
+              <svg><use href="assets/svg/git-branch.svg#icon-git-branch"></use></svg>
+            </div>
+            <div class="security-feature__text">
+              <h3>Git-Integrated Workflows</h3>
+              <p>Manage training and evaluation logic through GitHub or GitLab-integrated
+                workflows.</p>
+            </div>
           </li>
-          <li>
-            <svg class="feature-list__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9 17.5 20 6.5" /></svg>
-            <span>Containerized execution for fairness, reproducibility, and long-term sustainability.</span>
+          <li class="security-feature">
+            <div class="security-feature__icon" aria-hidden="true">
+              <svg><use href="assets/svg/container.svg#icon-container"></use></svg>
+            </div>
+            <div class="security-feature__text">
+              <h3>Containerized Execution</h3>
+              <p>Every submission runs in an isolated container, for fairness, reproducibility,
+                and long-term sustainability.</p>
+            </div>
           </li>
-          <li>
-            <svg class="feature-list__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9 17.5 20 6.5" /></svg>
-            <span>Automated re-evaluation when organizers update a task; outdated results are
-              flagged if re-evaluation is disabled.</span>
+          <li class="security-feature">
+            <div class="security-feature__icon" aria-hidden="true">
+              <svg><use href="assets/svg/refresh.svg#icon-refresh"></use></svg>
+            </div>
+            <div class="security-feature__text">
+              <h3>Automated Re-Evaluation</h3>
+              <p>Results are automatically re-evaluated when organizers update a task; outdated
+                results are flagged if re-evaluation is disabled.</p>
+            </div>
           </li>
-          <li>
-            <svg class="feature-list__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9 17.5 20 6.5" /></svg>
-            <span>Pre-execution checks — file type/size limits, expected entry points,
-              per-participant quotas and rate limits.</span>
+          <li class="security-feature">
+            <div class="security-feature__icon" aria-hidden="true">
+              <svg><use href="assets/svg/checklist.svg#icon-checklist"></use></svg>
+            </div>
+            <div class="security-feature__text">
+              <h3>Pre-Execution Checks</h3>
+              <p>File type and size limits, expected entry points, per-participant quotas, and
+                rate limits are enforced before a submission ever runs.</p>
+            </div>
           </li>
-          <li>
-            <svg class="feature-list__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9 17.5 20 6.5" /></svg>
-            <span>Optional submission scanning — predefined templates, custom scanner code, or a
-              locally-running LLM — combinable with human-in-the-loop review before
-              execution.</span>
+          <li class="security-feature">
+            <div class="security-feature__icon" aria-hidden="true">
+              <svg><use href="assets/svg/scan.svg#icon-scan"></use></svg>
+            </div>
+            <div class="security-feature__text">
+              <h3>Submission Scanning</h3>
+              <p>Optional scanning via predefined templates, custom scanner code, or a
+                locally-running LLM — combinable with human-in-the-loop review before
+                execution.</p>
+            </div>
           </li>
-          <li>
-            <svg class="feature-list__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9 17.5 20 6.5" /></svg>
-            <span>Network-isolated execution by default, for security and for clean,
-              uninfluenced resource measurements; network access can be explicitly enabled and is
-              flagged when required (e.g. API-based LLM evaluation).</span>
+          <li class="security-feature">
+            <div class="security-feature__icon" aria-hidden="true">
+              <svg><use href="assets/svg/network-off.svg#icon-network-off"></use></svg>
+            </div>
+            <div class="security-feature__text">
+              <h3>Network Isolation</h3>
+              <p>Execution is network-isolated by default, for security and for clean,
+                uninfluenced resource measurements. Access can be explicitly enabled and is
+                flagged when required (e.g. API-based LLM evaluation).</p>
+            </div>
           </li>
-          <li>
-            <svg class="feature-list__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9 17.5 20 6.5" /></svg>
-            <span>Decentralized submission storage — files are routed directly to the client's
-              linked storage (AWS S3, GCS, Azure Blob, or local hardware), never stored centrally
-              on AVALIA's infrastructure.</span>
+          <li class="security-feature">
+            <div class="security-feature__icon" aria-hidden="true">
+              <svg><use href="assets/svg/storage.svg#icon-storage"></use></svg>
+            </div>
+            <div class="security-feature__text">
+              <h3>Decentralized Storage</h3>
+              <p>Files are routed directly to the client's linked storage (AWS S3, GCS, Azure
+                Blob, or local hardware) — never stored centrally on AVALIA's infrastructure.</p>
+            </div>
           </li>
         </ul>
       </div>
@@ -460,6 +570,8 @@
         <div class="section-head">
           <p class="eyebrow">Trusted By</p>
           <h2 class="h3">Institutions running high-stakes AI research</h2>
+          <p class="body-lead">These institutions have placed their trust in the MLChallenges
+            team behind AVALIA to run their benchmarks and competitions.</p>
         </div>
         <ul class="trusted-by__logos">
           <li><img src="assets/images/trusted_by/chalearn.png" alt="ChaLearn" class="trusted-by__logo"></li>
@@ -475,7 +587,7 @@
         </ul>
 
         <div class="trusted-by__banner">
-          <p>AVALIA is being built by the team behind
+          <p>AVALIA is being built by people who developed and maintained
             <img src="assets/images/codabench.png" alt="Codabench" class="trusted-by__banner-logo">,
             the most popular open-source competitions and benchmarks platform.</p>
         </div>
